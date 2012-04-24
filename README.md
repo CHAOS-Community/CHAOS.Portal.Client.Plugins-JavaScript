@@ -8,7 +8,8 @@ This is a collection of plugins for the JavaScript PortalClient.
 The source code is located in the *src* folder.  
 
 ##Examples
-The examples are located in the *examples* folder.
+The examples are located in the *examples* folder.  
+Make sure to update the referenced script file paths if the examples are moved.
 
 ##Reporting problems
 If you encounter any problems using this project, please report them using the "Issues" section of the projects Github page.
