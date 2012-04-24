@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>UITexter Example</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="CHAOS.Portal.Client.PortalClient.js"></script>
+		<script type="text/javascript" src="CHAOS.Portal.Client.Plugins.UITexter.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(event)
+			{
+				$(".StartForm").submit(function(event)
+				{
+					event.preventDefault();
+					
+					$(".StartForm").hide();
+					
+					var texter = new UITexter($(this).find("input[name=ServicePath]").val(),
+												$(this).find("input[name=ObjectGUID]").val(),
+												$(this).find("input[name=Email]").val(),
+												$(this).find("input[name=Password]").val());
+
+					texter.SetLanguage("da");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>UITexter Example</h1>
+		<form class="StartForm" action="">
+			<label>Service Path: <input name="ServicePath" type="text"></label>
+			<label>Object GUID: <input name="ObjectGUID" type="text"></label>
+			<label>Email: <input name="Email" type="text"></label>
+			<label>Password: <input name="Password" type="password"></label>
+			<input type="submit">
+		</form>
+		<p class="Title">My Title</p>
+		<p class="Abstract">My Abstract</p>
+		<p class="Type">My Type</p>
+		<p class="Description">My Description</p>
+		<p class="Organization">My Organization</p>
+	</body>
+</html>
