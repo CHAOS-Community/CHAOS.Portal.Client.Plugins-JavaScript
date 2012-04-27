@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>SecureCookie Helper Example</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="../lib/CHAOS.Portal.Client.PortalClient.js"></script>
+		<script type="text/javascript" src="../src/CHAOS.Portal.Client.Plugins.SecureCookieHelper.js"></script>
+		<script type="text/javascript">
+			var client = null;
+			
+			$(document).ready(function(event)
+			{
+				$(".StartForm").submit(function(event)
+				{
+					event.preventDefault();
+					$(".StartForm").hide();
+					
+					client = new PortalClient($(this).find("input[name=ServicePath]").val());
+					client.SaveLoginCookie(90); //Save cookie for 90 days.
+					
+					client.LoginWithCookie(function(success)
+					{
+						$(".Result").append("Cookie login returned: " + success);
+						
+						if(!success)
+							$(".LoginForm").show();
+						
+					});
+				});
+				
+				$(".LoginForm").submit(function(event)
+				{
+					event.preventDefault();
+					$(".LoginForm").hide();
+					
+					client.EmailPassword_Login(null, $(this).find("input[name=Email]").val(), $(this).find("input[name=Password]").val())
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>SecureCookie Helper Example</h1>
+		<form class="StartForm" action="">
+			<label>Service Path: <input name="ServicePath" type="text"></label>
+			<input type="submit">
+		</form>
+		<form class="LoginForm" action="" style="display: none;">
+			<label>Email: <input name="Email" type="text"></label>
+			<label>Password: <input name="Password" type="password"></label>
+			<input type="submit">
+		</form>
+		<div class="Result"></div>
+	</body>
+</html>

@@ -15,12 +15,22 @@
 					
 					$(".StartForm").hide();
 					
-					var texter = new UITexter($(this).find("input[name=ServicePath]").val(),
-												$(this).find("input[name=ObjectGUID]").val(),
-												$(this).find("input[name=Email]").val(),
-												$(this).find("input[name=Password]").val());
-
-					texter.SetLanguage("da");
+					var servicePath = $(this).find("input[name=ServicePath]").val(); 
+					var email = $(this).find("input[name=Email]").val(); 
+					var password = $(this).find("input[name=Password]").val();
+					var objectGUID = $(this).find("input[name=ObjectGUID]").val();
+					
+					var client = new PortalClient(servicePath);
+					
+					client.SessionCreated().Add(function(sender, data)
+					{
+						client.EmailPassword_Login(null, email, password);
+					});
+					
+					client.SessionAuthenticated().Add(function(sender, data)
+					{
+						client.ApplyMetadata(objectGUID, "da");
+					});
 				});
 			});
 		</script>
