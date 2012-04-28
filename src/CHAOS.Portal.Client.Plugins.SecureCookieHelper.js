@@ -52,7 +52,7 @@ PortalClient.RegisterPlugin(function()
 		return result;
 	}
 
-	function LoginWithCookie()
+	function CookieLogin()
 	{
 		var login = GetSecureCookie();
 		
@@ -65,7 +65,7 @@ PortalClient.RegisterPlugin(function()
 
 		self.SecureCookie_Login(function(serviceResult)
 		{
-			var result = serviceResult.WasSuccess() && serviceResult.EmailPassword().WasSuccess();
+			var result = serviceResult.WasSuccess() && serviceResult.SecureCookie().WasSuccess();
 			
 			if(result)
 			{
@@ -95,7 +95,7 @@ PortalClient.RegisterPlugin(function()
 	this.SessionCreated().Add(function(sender, data)
 	{
 		if(_shouldLoginWithCookie)
-			LoginWithCookie();
+			CookieLogin();
 	});
 
 	this.SessionAuthenticated().Add(function(sender, data)
@@ -118,7 +118,7 @@ PortalClient.RegisterPlugin(function()
 				_loginWithCookieCallbacks.push(callback);
 			
 			if(this.IsSessionCreated() && !this.IsSessionAuthenticated())
-				LoginWithCookie();
+				CookieLogin();
 		},
 		
 		SaveLoginCookie: function(value)
