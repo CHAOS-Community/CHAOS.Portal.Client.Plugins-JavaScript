@@ -5,7 +5,7 @@
 		<title>UITexter Example</title>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script type="text/javascript" src="../lib/CHAOS.Portal.Client.PortalClient.js"></script>
-		<script type="text/javascript" src="../src/CHAOS.Portal.Client.Plugins.UITexter.js"></script>
+		<script type="text/javascript" src="../src/CHAOS.Portal.Client.Plugins.UITexter.js"></script> <!-- When the plugin is included, it adds itself to PortalClient -->
 		<script type="text/javascript">
 			$(document).ready(function(event)
 			{
@@ -20,7 +20,7 @@
 					var password = $(this).find("input[name=Password]").val();
 					var objectGUID = $(this).find("input[name=ObjectGUID]").val();
 					
-					var client = new PortalClient(servicePath);
+					var client = new PortalClient(servicePath); //This instance of PortalClient will include UITexter methods.
 					
 					client.SessionCreated().Add(function(sender, data)
 					{
@@ -29,7 +29,8 @@
 					
 					client.SessionAuthenticated().Add(function(sender, data)
 					{
-						client.ApplyMetadata(objectGUID, "da");
+						client.ApplyMetadata(objectGUID, "da"); //Apply the Danish metadata from all schemas from the specified object. This is an UITexter plugin method.
+						//client.ApplyMetadata(objectGUID, "en", "<My schema GUID>"); //Apply the English metadata from the specified schema and object.
 					});
 				});
 			});
