@@ -1,7 +1,7 @@
 if (!jQuery)
 	throw "jQuery not loaded";
 if(!PortalClient)
-	throw "PortalCLient not loaded";
+	throw "PortalClient not loaded";
 
 // ******************************** UITexter ********************************
 
@@ -15,7 +15,7 @@ PortalClient.RegisterPlugin(function()
 		metadata.children().first().children().each(function ()
 		{
 			$("." + this.nodeName).text($(this).text());
-		})
+		});
 	}
 	
 	return {
@@ -43,7 +43,6 @@ PortalClient.RegisterPlugin(function()
 							ReplaceUIText(object.Metadatas[i].MetadataXML);
 							foundMetadata = true;
 						}
-							
 					}
 					
 					if(!foundMetadata && !failSilently)
