@@ -69,7 +69,7 @@ PortalClient.RegisterPlugin(function()
 			
 			if(result)
 			{
-				var cookie = serviceResult.EmailPassword().Results()[0];
+				var cookie = serviceResult.SecureCookie().Results()[0];
 				
 				SetSecureCookie(cookie.GUID, cookie.PasswordGUID, _cookieDaysLifetime);
 			}
