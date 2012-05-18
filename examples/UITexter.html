@@ -22,7 +22,7 @@
 					
 					var client = new PortalClient(servicePath); //This instance of PortalClient will include UITexter methods.
 					
-					client.SessionCreated().Add(function(sender, data)
+					client.SessionAcquired().Add(function(sender, data)
 					{
 						client.EmailPassword_Login(null, email, password);
 					});

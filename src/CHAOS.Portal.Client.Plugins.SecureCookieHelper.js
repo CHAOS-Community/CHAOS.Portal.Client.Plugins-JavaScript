@@ -92,7 +92,7 @@ PortalClient.RegisterPlugin(function()
 		});
 	}
 	
-	this.SessionCreated().Add(function(sender, data)
+	this.SessionAcquired().Add(function(sender, data)
 	{
 		if(_shouldLoginWithCookie)
 			CookieLogin();
@@ -117,7 +117,7 @@ PortalClient.RegisterPlugin(function()
 			if(typeof callback === "function")
 				_loginWithCookieCallbacks.push(callback);
 			
-			if(this.IsSessionCreated() && !this.IsSessionAuthenticated())
+			if(this.HasSession() && !this.IsSessionAuthenticated())
 				CookieLogin();
 		},
 		
