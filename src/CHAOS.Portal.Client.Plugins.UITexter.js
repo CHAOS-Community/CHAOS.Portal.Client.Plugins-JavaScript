@@ -19,7 +19,7 @@ PortalClient.RegisterPlugin(function()
 	}
 	
 	return {
-		ApplyMetadata: function(objectGUID, languageCode, schemaGUID, failSilently)
+		ApplyMetadata: function(objectGUID, languageCode, schemaGUID, accessPointGUID, failSilently)
 		{
 			if(typeof objectGUID === "undefined")
 				throw "Parameter objectGUID must be set";
@@ -57,7 +57,7 @@ PortalClient.RegisterPlugin(function()
 					else
 						throw "Object was not found";
 				}
-			}, objectGUID, true, false, false );
+			}, objectGUID, accessPointGUID, true, false, false );
 		}
 	}	
 });
