@@ -12,11 +12,11 @@ PortalClient.RegisterPlugin(function()
 	
 	function SetSecureCookie(guid, passwordGUID, expireInDays)
 	{
-		var expiredate = new Date();
-		expiredate.setDate(expiredate.getDate() + expireInDays);
+		var expireDate = new Date();
+		expireDate.setDate(expireDate.getDate() + expireInDays);
 
-		document.cookie = "SecureCookieGUID=" + (guid == null ? "" : guid) + "; expires=" + expiredate.toUTCString() + ";";
-		document.cookie = "SecureCookieGUIDPassword=" + (passwordGUID == null ? "" : passwordGUID) + "; expires=" + expiredate.toUTCString() + ";";
+		document.cookie = "SecureCookieGUID=" + (guid == null ? "" : guid) + "; expires=" + expireDate.toUTCString() + ";";
+		document.cookie = "SecureCookieGUIDPassword=" + (passwordGUID == null ? "" : passwordGUID) + "; expires=" + expireDate.toUTCString() + ";";
 	}
 	
 	function ClearSecureCookie()
