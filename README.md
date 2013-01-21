@@ -1,3 +1,5 @@
+**IMPORTANT - This project has been superseded by [TypeScript client](https://github.com/CHAOS-Community/CHAOS.Portal.Client-TypeScript) (fully JavaScript compatible)**  
+  
 #CHAOS.Portal.Client.Plugins (JavaScript)
 This is a collection of plugins for the JavaScript PortalClient.
 
